@@ -7,11 +7,13 @@ import Button from 'react-bootstrap/Button'
 import Tasks from './components/Tasks'
 import {useState} from 'react'
 import Task from './components/Task'
+import AddTask from './components/AddTask'
+import { object } from 'prop-types'
 
 
 function App(){
 
-  const [tasks,setTasks]= useState(  [
+  let [tasks,setTasks]= useState(  [
     {
       "id": 1,
       "text": "Doctors Appointment",
@@ -32,11 +34,28 @@ function App(){
       "reminder": false
     },
   ])
-
+//delete fum
   const DeleteFun=(id) =>{
     console.log('delete',id)
     setTasks(tasks.filter((task) => task.id!==id))
   }
+  //toggle reminder fun
+  const ToggleReminder=(id)=>{
+    // console.log('ToggleReminder',id);
+    setTasks(tasks.map((task)=>task.id===id?{...task,reminder:!task.reminder}:task))
+  }
+//add fun
+const AddTasks=(task)=>{
+  // console.log(object)
+  const id =Math.floor(Math.random()*200)+1
+  console.log(id);
+  console.log(task);
+  let newTasks={id,...task}
+  
+  setTasks=([...tasks,newTasks])
+}
+
+
   
   return(
     <>
@@ -58,10 +77,18 @@ color="	#696969"
 
 
 />
-<Tasks 
+<AddTask 
+AddTasks={AddTasks}
+/>
+
+{tasks.length>0 ? <Tasks 
 tasks={tasks}
 DeleteFun={DeleteFun}
-/>
+ToggleReminder={ToggleReminder}
+/> 
+
+
+:'No tasks'}
 
 
     </>

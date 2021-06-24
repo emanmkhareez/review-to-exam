@@ -1,5 +1,5 @@
 nav {
-  background-color: 	#dfccb0;;
+  background-color: 	#dfccb0;
   height: 70px;
   width: 100%;
 
@@ -31,6 +31,10 @@ li a:hover {
   
 
 }
+.task.reminder {
+  border-left: 30px solid green;
+}
+
 .task{
   background-color:#FFE4C4;
   width: 40%;

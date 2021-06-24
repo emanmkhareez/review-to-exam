@@ -13,9 +13,12 @@ const Tasks =(props)=>{
        
     
         
-        {props.tasks.map( (task) =>(<Task key={task.id}
+        {props.tasks.map( (task) =>(<Task 
+        key={task.id}
         task={task}  
-        DeleteFun={props.DeleteFun}/>))}
+        DeleteFun={props.DeleteFun}
+        ToggleReminder={props.ToggleReminder}
+        />))}
 
 
          {/* num =[task.text,task.id].join('  ') */}
